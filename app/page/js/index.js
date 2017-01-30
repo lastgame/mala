@@ -29,6 +29,15 @@ $(()=>{
     $('#btnMsg').on('click',()=>{
         ipc.send('showMsg',{type:1,msg:'这是错误消息！'});
     });
+    //socket io
+    var socket = io('http://localhost:3000');
+    socket.on('msg', function (data) {
+        console.error(data);
+    });
+    $('#btnSendMsg').on('click',()=>{
+        socket.emit('msg', { my: 'data' });
+        console.log('发送成功！')
+    });
 });
 ipc.on('get-app-path',(e,path)=>{
     $('#msg').html(path);
