@@ -2,7 +2,7 @@
  * Created by Administrator on 2017/1/30.
  */
 "use strict";
-const {app, BrowserWindow,globalShortcut,ipcMain} = require('electron');
+const {app, BrowserWindow,globalShortcut,ipcMain,dialog} = require('electron');
 const path = require('path');
 const url = require('url');
 
@@ -43,10 +43,28 @@ let createWindow = () => {
     //侦听通讯事件
     ipcMain.on('get-app-path',(e)=>{
         e.sender.send('get-app-path',app.getAppPath());
-    }).on('getBrowserWindow',(e)=>{
-        console.log('main:has recieve xxx!',win);
-        e.sender.send('getBrowserWindow',win);
+    }).on('closeWindow',(e)=>{
+        console.log('start to closeWindow!');
+        win.close();
+        //e.sender.send('getBrowserWindow',win);
+    }).on('showMsg',(e,o)=>{
+        switch (o.type){
+            case 0://ERROR
+                dialog.showErrorBox(o.title||null,o.msg);
+                break;
+            case 1://SUCCESS
+                dialog.showMessageBox({
+                    type: 'info',
+                    title: 'Information',
+                    message: "This is an information dialog. Isn't it nice?",
+                    buttons: ['Yes', 'No']
+                },(index)=>{
+                    //e.sender.send('');
+                });
+                break;
+        }
     });
+
 };
 
 
