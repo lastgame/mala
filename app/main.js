@@ -28,12 +28,6 @@ let createWindow = () => {
         // 与此同时，你应该删除相应的元素。
         win = null
     });
-    //开始对象
-    //win.webContents.openDevTools();
-    //win.webContents.closeDevTools();
-/*    $('#btnTest').on('focus',function () {
-        console.log('you focus the win');
-    });*/
     //快捷键
     globalShortcut.register('Esc', () => {
         // Do stuff when Y and either Command/Control is pressed.
