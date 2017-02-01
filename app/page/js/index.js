@@ -51,6 +51,10 @@ $(()=>{
     $('#btnClean').on('click',()=>{
         $('#msgSocket').empty();
     });
+    //调试工具
+    $('#btnOpenDev').on('click',()=>{
+        ipc.send('openDev');
+    });
     //Test
     $('#msgOne').css({'background':'blue',color:'white'});
 });

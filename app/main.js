@@ -29,7 +29,7 @@ let createWindow = () => {
         win = null
     });
     //开始对象
-    win.webContents.openDevTools();
+    //win.webContents.openDevTools();
     //win.webContents.closeDevTools();
 /*    $('#btnTest').on('focus',function () {
         console.log('you focus the win');
@@ -63,6 +63,8 @@ let createWindow = () => {
                 });
                 break;
         }
+    }).on('openDev',()=>{
+        win.webContents.openDevTools({mode:'bottom'});
     });
 
 };

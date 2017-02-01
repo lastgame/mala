@@ -6,9 +6,10 @@
     "start": "electron ."
   },
   "devDependencies": {
+    "devtron": "^1.4.0",
     "electron-packager": "^8.5.1"
   },
-  "script":{
+  "script": {
     "packager": "electron-packager ./ mala --all --out ./target --electron-version 1.4.15"
   }
 }
