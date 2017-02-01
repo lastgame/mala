@@ -67,6 +67,7 @@ let addLog = (id,msg)=>{
     if(MSG_COUNT_CUR>1000){
         msgStock.innerHTML='';
         MSG_COUNT_CUR = 0;
+        exportLog();//导出日志
     }
     switch (id){
         case 'msgSocket':

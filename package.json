@@ -1,8 +1,14 @@
 {
-  "name"    : "ddgServer",
-  "version" : "0.1.0",
-  "main"    : "app/main.js",
+  "name": "ddgServer",
+  "version": "0.1.0",
+  "main": "app/main.js",
   "scripts": {
     "start": "electron ."
+  },
+  "devDependencies": {
+    "electron-packager": "^8.5.1"
+  },
+  "script":{
+    "packager": "electron-packager ./ mala --all --out ./target --electron-version 1.4.15"
   }
 }
