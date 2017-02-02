@@ -1,0 +1,1 @@
+electron-windows-inno-installer ./setup.iss --platform win32-x64 --icon ./resource/logo.ico
