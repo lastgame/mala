@@ -9,10 +9,9 @@ var MSG_COUNT_CUR = 0;
 $(()=>{
     //要先通讯取得对象？
     $('#btnTest').on('click',()=>{
-        //alert('it is ok!!!');
         console.log('this is a test...');
         ipc.send('get-app-path');
-        ipc.send('closeWindow');
+        //ipc.send('closeWindow');
         //win && (win = null);
     });
     //关闭窗口
@@ -34,13 +33,11 @@ $(()=>{
     //socket io
     let socket = io('http://localhost:3000');
     socket.on('connect',()=>{
-        console.info('Server连接成功');
-    }).on('disconnect',()=>{
-        console.info('服务断开链接');
+        addLog('msgSocket','Server连接成功');
+    }).on('connect_error',()=>{
+        addLog('msgSocket','连接错误');
     }).on('msg', function (data) {
-        console.info(data);
-        //$('#msgSocket').append(data+'\n');
-        //$('#msgSocket').append('<option style="color:blue">'+data+'</option>');
+        //console.info(data);
         addLog('msgSocket',data);
     });
     $('#btnSendMsg').on('click',()=>{
@@ -49,6 +46,8 @@ $(()=>{
     });
     //清空日志
     $('#btnClean').on('click',()=>{
+        MSG_COUNT_CUR = 0;
+        document.querySelector('#msgCountCur').innerText = 0;
         $('#msgSocket').empty();
     });
     //调试工具
@@ -75,8 +74,6 @@ let addLog = (id,msg)=>{
     }
     switch (id){
         case 'msgSocket':
-            //$('#'+id).append(msg);
-            //$('#'+id).append('<div class="msgRow">'+msg+'</div>');
             $('<div class="msgRow">'+msg+'</div>').appendTo('#msgSocket');
             break;
     }
