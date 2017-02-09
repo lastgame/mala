@@ -1,5 +1,5 @@
 {
-  "name": "ddgServer",
+  "name": "newServer",
   "version": "0.1.0",
   "main": "app/main.js",
   "scripts": {
